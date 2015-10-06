@@ -79,9 +79,52 @@ git add .
 
 Okay then, time to make the commit:
 ```
-git commit -m "First commit"
+git commit -m "First local commit"
 ```
 
 The snapshots are always committed to the *local* repository. That brings us to yet another important aspect of git.
 
-###*Remotes*
+
+###*Collaborating with Git*
+
+Up until now, we had been working locally on the clone we had made. Now, we will briefly explore Git's collaboration model which has made it so very popular amongst the developer community.
+
+###*Managing remote connections*
+
+When we had cloned this repository locally, a link had been established automatically between our local copy and the github repository.
+To see it for yourself,
+```
+git remote -v
+```
+
+```git remote``` lets us manage remote connections. As you can see, the local copy is linked to the repo on github.
+
+###*Creating a new github repository*
+
+On your github page, go to the *Repositories* tab and click on the green *New* button to create a new repository. Choose a name and use the default settings. Click on the green *Create Repository* button at the bottom.
+Voila! You have a new github repository now.
+
+##*Linking to a remote and pushing changes*
+
+On this new repository's home page, you will find a link. Copy this (HTTPS) link.
+
+Now, go to your local repository. The ```git remote``` command used previously can be used to add new remote connections as well.
+Link your local copy to the new created github repository,
+```
+git remote add local_to_github <insert the copied link>
+```
+
+Here, *local_to_github* is the name we have given to the remote connection.
+You can see it listed among the remote connections:
+```
+git remote -v
+```
+
+We had earlier made and committed some changes to this local copy of ours. We are now going to use the ```git push``` command to push these changes to our newly created github repository.
+
+```
+git push -u local_to_github master
+```
+
+You will be asked for your github account details. Fill them up.
+Congrats, you just made your first commit on github!
